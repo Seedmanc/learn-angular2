@@ -1,0 +1,4 @@
+.app-warning-alert, app-success-alert {
+  color: white;
+  font-weight: bold;
+}
