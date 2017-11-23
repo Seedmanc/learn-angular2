@@ -16,6 +16,7 @@ import { EvenComponent } from './practice4/even/even.component';
 import { Practice5Component } from './practice5/practice5.component';
 import { ActiveUsersComponent } from './practice5/active-users/active-users.component';
 import { InactiveUsersComponent } from './practice5/inactive-users/inactive-users.component';
+import {CounterService} from "./practice5/counter.service";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { InactiveUsersComponent } from './practice5/inactive-users/inactive-user
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CounterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

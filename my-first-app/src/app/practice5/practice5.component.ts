@@ -1,28 +1,24 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {UserService} from "./user.service";
+import {CounterService} from "./counter.service";
 
 @Component({
   selector: 'app-practice5',
   templateUrl: './practice5.component.html',
   styleUrls: ['./practice5.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [UserService]
 })
 export class Practice5Component implements OnInit {
 
-  activeUsers = ['Max', 'Anna'];
-  inactiveUsers = ['Chris', 'Manu'];
+  activeUsers: string[] = [];
+  inactiveUsers: string[] = [];
 
-  constructor() { }
+  constructor(private userService: UserService, private counterService: CounterService) { }
+
   ngOnInit() {
-  }
-
-  onSetToInactive(id: number) {
-    this.inactiveUsers.push(this.activeUsers[id]);
-    this.activeUsers.splice(id, 1);
-  }
-
-  onSetToActive(id: number) {
-    this.activeUsers.push(this.inactiveUsers[id]);
-    this.inactiveUsers.splice(id, 1);
+    this.activeUsers = this.userService.activeUsers;
+    this.inactiveUsers = this.userService.inactiveUsers;
   }
 
 }
