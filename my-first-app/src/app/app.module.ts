@@ -13,6 +13,9 @@ import { Practice4Component } from './practice4/practice4.component';
 import { GameControlComponent } from './practice4/game-control/game-control.component';
 import { OddComponent } from './practice4/odd/odd.component';
 import { EvenComponent } from './practice4/even/even.component';
+import { Practice5Component } from './practice5/practice5.component';
+import { ActiveUsersComponent } from './practice5/active-users/active-users.component';
+import { InactiveUsersComponent } from './practice5/inactive-users/inactive-users.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { EvenComponent } from './practice4/even/even.component';
     Practice4Component,
     GameControlComponent,
     OddComponent,
-    EvenComponent
+    EvenComponent,
+    Practice5Component,
+    ActiveUsersComponent,
+    InactiveUsersComponent
   ],
   imports: [
     BrowserModule,
