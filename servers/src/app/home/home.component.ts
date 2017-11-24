@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   onLoadServer(id: number) {
     // complex calculation
     //noinspection TypeScriptValidateTypes
-    this.router.navigate(['/servers', id], {queryParams: {allowEdit: 1}, fragment: 'loading'});
+    this.router.navigate(['/servers', id, 'edit'], {queryParams: {allowEdit: 1}, fragment: 'loading'});
   }
 
 }
