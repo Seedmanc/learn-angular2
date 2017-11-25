@@ -1,9 +1,8 @@
-<rcp-header (switchPage)="switchPage = $event"></rcp-header>
+<rcp-header></rcp-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <recipes *ngIf="switchPage == 'recipes'"></recipes>
-      <shopping-list *ngIf="switchPage == 'shopping'"></shopping-list>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
