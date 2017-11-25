@@ -26,6 +26,9 @@ export class RecipesService {
   getRecipes() {
     return this.recipes.slice();
   }
+  getRecipe(id: number) {
+    return this.recipes[id];
+  }
 
   addToShop(ingredients: Ingredient[]) {
     this.shopService.addIngs(ingredients);
