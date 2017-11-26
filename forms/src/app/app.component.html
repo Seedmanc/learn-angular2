@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h3> Practice 6</h3>
+      <p>Add a Form with the following Inputs (and Validators)</p>
+        <ol>
+          <li>Mail address (should not be empty and should be an email address)</li>
+          <li>A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
+              Set "Advanced" as Default</li>
+          <li>A Password field (should not be empty)</li>
+          <li>A Submit Button</li>
+      </ol>
+      <p>Display a warning message if the Form is invalid AND was touched. Display a warning message below each input if it's invalid.</p>
+
+      <p>Upon submitting the form, you should simply print the Value of the Form to the Console.
+           Optionally, display it in your template.</p>
+
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+       <form #f="ngForm" (ngSubmit)="onSubmit()">
+         <div class="form-group">
+           <label>Email: <input name="email" type="email" class="form-control" email required #email="ngModel" ngModel></label>
+           <p class="help-block" *ngIf="email.invalid && email.touched">Invalid/missing email</p>
+         </div>
+
+         <div class="form-group">
+           <label>Subscription:
+             <select name="type" #type="ngModel" [ngModel]="'Advanced'" class="form-control">
+               <option *ngFor="let type of types" value="{{type}}">{{type}}</option>
+              </select>
+           </label>
+         </div>
+
+         <div class="form-group">
+           <label>Password: <input name="password" type="password" required #password="ngModel" class="form-control" ngModel></label>
+           <p *ngIf="password.invalid && password.touched">You must specify a password</p>
+         </div>
+
+         <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Submit</button>
+       </form>
+      <p *ngIf="f.invalid && f.touched">The form is invalid</p>
+      <p *ngIf="f.submitted">{{f.value | json}}</p>
+    </div>
+  </div>
+</div>
