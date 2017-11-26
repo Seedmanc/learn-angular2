@@ -15,6 +15,7 @@ import {ShoppingListService} from "./shopping-list/shopping-list.service";
 import { ErrorPageComponent } from './error-page/error-page.component';
 import {AppRoutingModule} from "./app-routing.module";
 import { RecipePlaceholderComponent } from './recipes/recipe-placeholder/recipe-placeholder.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { RecipePlaceholderComponent } from './recipes/recipe-placeholder/recipe-
     ShoppingEditComponent,
     DropdownDirective,
     ErrorPageComponent,
-    RecipePlaceholderComponent
+    RecipePlaceholderComponent,
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,
