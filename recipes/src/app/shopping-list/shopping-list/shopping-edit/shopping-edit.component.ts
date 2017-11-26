@@ -17,5 +17,6 @@ export class ShoppingEditComponent implements OnInit {
 
   addItem(amount: number) {
     this.shoppingService.addIng(new Ingredient(this.nameInput.nativeElement.value, amount));
+    return false;
   }
 }
