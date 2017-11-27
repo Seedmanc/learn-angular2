@@ -10,6 +10,10 @@ export class ShoppingListService {
     new Ingredient('Tomato', 10),
   ];
 
+  private pushChanges() {
+    this.ingChanged.next(this.ingredients.slice());
+  }
+
   getIng(id) {
     return this.ingredients[id];
   }
@@ -19,22 +23,27 @@ export class ShoppingListService {
   }
 
   addIng(ing: Ingredient){
-    this.ingredients.push(ing);
-    this.ingChanged.next(this.ingredients.slice());
+    const id = this.ingredients.findIndex(el => el.name == ing.name);
+
+    if (~id) {
+      this.ingredients[id].amount += ing.amount;
+    } else {
+      this.ingredients.push(ing);
+    }
+    this.pushChanges();
   }
 
   addIngs(ings: Ingredient[]){
-    this.ingredients.push(...ings);
-    this.ingChanged.next(this.ingredients.slice());
+    ings.forEach(ing => this.addIng(ing));
   }
 
   updIngs(id: number, ing: Ingredient) {
     this.ingredients[id] = ing;
-    this.ingChanged.next(this.ingredients);
+    this.pushChanges();
   }
 
   delIng(id) {
     this.ingredients.splice(id, 1);
-    this.ingChanged.next(this.ingredients);
+    this.pushChanges();
   }
 }
