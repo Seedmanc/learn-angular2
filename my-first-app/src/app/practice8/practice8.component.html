@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Practice 8</h3>
+    <ol>
+      <li>Create a pipe that reverses a string</li>
+      <li>Create a pipe that sorts an array</li>
+    </ol>
+    <hr>
+    <input type="text" [(ngModel)]="filteredStatus">
+    <br>
+    <button class="btn btn-primary" (click)="onAddServer()">Add Server</button>
+    <br><br>
+    <h2>App Status: {{ appStatus | async}}</h2>
+    <hr>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let server of servers | sort"
+        [ngClass]="getStatusClasses(server)">
+        <span
+          class="badge">
+          {{ server.status }}
+        </span>
+        <strong>{{ server.name }}</strong> |
+        {{ server.instanceType | uppercase | reverse}} |
+        {{ server.started | date:'fullDate' | uppercase }}
+      </li>
+    </ul>
+  </div>
+</div>

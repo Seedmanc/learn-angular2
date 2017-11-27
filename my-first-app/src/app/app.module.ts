@@ -17,6 +17,9 @@ import { Practice5Component } from './practice5/practice5.component';
 import { ActiveUsersComponent } from './practice5/active-users/active-users.component';
 import { InactiveUsersComponent } from './practice5/inactive-users/inactive-users.component';
 import {CounterService} from "./practice5/counter.service";
+import { Practice8Component } from './practice8/practice8.component';
+import { ReversePipe } from './practice8/reverse.pipe';
+import { SortPipe } from './practice8/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import {CounterService} from "./practice5/counter.service";
     EvenComponent,
     Practice5Component,
     ActiveUsersComponent,
-    InactiveUsersComponent
+    InactiveUsersComponent,
+    Practice8Component,
+    ReversePipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
