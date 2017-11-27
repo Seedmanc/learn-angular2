@@ -5,7 +5,7 @@ export class Recipe {
   public imgpath: string;
   public ingredients: Ingredient[];
 
-  constructor(name: string, descr: string, imgpath: string, ingredients: Ingredient[]) {
-    Object.assign(this, {name, descr, imgpath, ingredients});
+  constructor(data:{name: string, descr: string, imgpath: string, ingredients: Ingredient[]}) {
+    Object.assign(this, data);
   }
 }
