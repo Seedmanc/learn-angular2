@@ -3,7 +3,7 @@
     <shopping-edit (ingAdded)="addIng($event)"></shopping-edit>
     <hr>
     <ul class="list-group">
-      <a class="list-group-item" style="cursor: pointer" *ngFor="let ing of ingredients">
+      <a class="list-group-item" style="cursor: pointer" *ngFor="let ing of ingredients; let i=index" (click)="edit(i)">
         {{ing.name}} ({{ing.amount}})
       </a>
     </ul>
