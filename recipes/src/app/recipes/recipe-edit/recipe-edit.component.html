@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-xs-12">
           <button class="btn btn-success" type="submit" [disabled]="form.invalid">Save</button>
-          <button class="btn btn-danger" type="button">Cancel</button>
+          <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
         </div>
         <div class="row">
           <div class="col-x2-12">
@@ -45,7 +45,7 @@
                 <input type="number"   class="form-control" formControlName="amount">
               </div>
               <div class="col-xs-2">
-                <button class="btn btn-danger" type="button">X</button>
+                <button class="btn btn-danger" (click)="deleteIng(i)" type="button">X</button>
               </div>
             </div>
             <hr>

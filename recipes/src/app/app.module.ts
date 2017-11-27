@@ -16,6 +16,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import {AppRoutingModule} from "./app-routing.module";
 import { RecipePlaceholderComponent } from './recipes/recipe-placeholder/recipe-placeholder.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import {RecipesService} from "./recipes/recipes.service";
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
