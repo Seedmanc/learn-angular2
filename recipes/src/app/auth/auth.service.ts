@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+import "rxjs/Rx";
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class AuthService {
-  token: string;
+  //token: string;
 
   constructor() { }
 
@@ -11,13 +13,19 @@ export class AuthService {
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(err => console.log(err));
   }
   signinUser({email, password}) {
-    firebase.auth().signInWithEmailAndPassword(email, password).then(response => {
-      firebase.auth().currentUser.getToken().then(token => this.token=token)
-    }).catch(err=>console.log(err));
+    firebase.auth().signInWithEmailAndPassword(email, password).then(response => {}).catch(err=>console.log(err));
   }
 
   getToken() {
-    firebase.auth().currentUser.getToken();
-    return this.token;
+    return Observable.fromPromise(firebase.auth().currentUser.getToken()/*.then(token => this.token = token)*/);
   }
+
+  isAuthed() {
+    return !!firebase.auth().currentUser;
+  }
+
+  logout() {
+    firebase.auth().signOut();
+  }
+
 }

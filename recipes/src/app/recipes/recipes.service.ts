@@ -55,13 +55,17 @@ export class RecipesService {
   }
 
   save() {
-    return this.http.put('https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+this.authS.getToken(), this.recipes);
+    return this.authS.getToken()
+      .flatMap(token => this.http.put('https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+token, this.recipes));
   }
   load() {
-    return this.http.get('https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+this.authS.getToken()).map(response=> {
-      this.recipes = response.json().map(el => new Recipe(el));
-      this.recipesChanges.next(this.recipes.slice());
-    });
+    return this.authS.getToken()
+      .flatMap(token => this.http.get('https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+token))
+      .map(response => {
+          this.recipes = response.json().map(el => new Recipe(el));
+          this.recipesChanges.next(this.recipes.slice());
+          return response;
+        });
   }
 
 }

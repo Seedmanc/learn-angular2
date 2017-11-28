@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RecipesService} from "../recipes/recipes.service";
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'rcp-header',
@@ -8,7 +9,7 @@ import {RecipesService} from "../recipes/recipes.service";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private recipeService: RecipesService) { }
+  constructor(private recipeService: RecipesService, private authS: AuthService) { }
 
   ngOnInit() {
   }
