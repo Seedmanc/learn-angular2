@@ -34,13 +34,18 @@ textarea.ng-invalid.ng-touched{
         <li _ngcontent-c1="" routerlinkactive="active" ng-reflect-router-link-active="active"><a _ngcontent-c1="" routerlink="shopping" ng-reflect-router-link="shopping" href="http://localhost:4200/shopping">Shopping List</a></li>
       </ul>
       <ul _ngcontent-c1="" class="nav navbar-nav navbar-right">
-        <li _ngcontent-c1="" appdropdown="" class="dropdown">
-          <a _ngcontent-c1="" class="dropdown-toggle" role="button" style="cursor: pointer;">Manage <span _ngcontent-c1="" class="caret"></span></a>
-          <ul _ngcontent-c1="" class="dropdown-menu">
-            <li _ngcontent-c1=""><a _ngcontent-c1="" href="#">Save Data</a></li>
-            <li _ngcontent-c1=""><a _ngcontent-c1="" href="#">Fetch Data</a></li>
-          </ul>
-        </li>
+        <!--bindings={
+  "ng-reflect-ng-if": "true"
+}-->
+          <li _ngcontent-c1=""><a _ngcontent-c1="" routerlink="/signup" ng-reflect-router-link="/signup" href="http://localhost:4200/signup">Register</a></li>
+          <li _ngcontent-c1=""><a _ngcontent-c1="" routerlink="/signin" ng-reflect-router-link="/signin" href="http://localhost:4200/signin">Login</a></li>
+
+        <!--bindings={
+  "ng-reflect-ng-if": "false"
+}-->
+        <!--bindings={
+  "ng-reflect-ng-if": "false"
+}-->
       </ul>
     </div>
   </div>
@@ -53,7 +58,9 @@ textarea.ng-invalid.ng-touched{
   <div _ngcontent-c2="" class="col-md-5">
     <recipe-list _ngcontent-c2="" _nghost-c3=""><div _ngcontent-c3="" class="row">
   <div _ngcontent-c3="" class="col-xs-12">
-    <button _ngcontent-c3="" class="btn btn-success" routerlink="new" tabindex="0" ng-reflect-router-link="new">New recipe</button>
+    <!--bindings={
+  "ng-reflect-ng-if": "false"
+}-->
   </div>
 </div>
 <hr _ngcontent-c3="">
