@@ -7,5 +7,6 @@ export class Recipe {
 
   constructor(data:{name: string, descr: string, imgpath: string, ingredients: Ingredient[]}) {
     Object.assign(this, data);
+    this.ingredients = this.ingredients || [];
   }
 }
