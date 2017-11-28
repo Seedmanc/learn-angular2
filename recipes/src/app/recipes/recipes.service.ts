@@ -5,12 +5,13 @@ import {ShoppingListService} from "../shopping-list/shopping-list.service";
 import {Subject} from "rxjs";
 import "rxjs/Rx";
 import {Http} from "@angular/http";
+import {AuthService} from "../auth/auth.service";
 
 @Injectable()
 export class RecipesService {
   recipesChanges = new Subject<Recipe[]>();
 
-  constructor(private shopService: ShoppingListService, private http: Http){}
+  constructor(private shopService: ShoppingListService, private http: Http, private authS:AuthService){}
 
   private recipes: Recipe[] = [
     new Recipe({
@@ -54,10 +55,10 @@ export class RecipesService {
   }
 
   save() {
-    return this.http.put('https://ng-recipe-book-f8908.firebaseio.com/recipes.json', this.recipes);
+    return this.http.put('https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+this.authS.getToken(), this.recipes);
   }
   load() {
-    return this.http.get('https://ng-recipe-book-f8908.firebaseio.com/recipes.json').map(response=> {
+    return this.http.get('https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+this.authS.getToken()).map(response=> {
       this.recipes = response.json().map(el => new Recipe(el));
       this.recipesChanges.next(this.recipes.slice());
     });
