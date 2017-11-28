@@ -50,6 +50,8 @@ export class RecipesService {
   }
 
   remove(id: number){
+    if (!this.authS.isAuthed()) return;
+
     this.recipes.splice(id, 1);
     this.recipesChanges.next(this.recipes.slice())
   }

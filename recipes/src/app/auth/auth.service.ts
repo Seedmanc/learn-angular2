@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import "rxjs/Rx";
 import {Observable} from 'rxjs';
@@ -7,13 +8,15 @@ import {Observable} from 'rxjs';
 export class AuthService {
   //token: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   signupUser({email, password}) {
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(err => console.log(err));
   }
   signinUser({email, password}) {
-    firebase.auth().signInWithEmailAndPassword(email, password).then(response => {}).catch(err=>console.log(err));
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(response => this.router.navigate(['/recipes']))
+      .catch(err=>console.log(err));
   }
 
   getToken() {
