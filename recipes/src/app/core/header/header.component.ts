@@ -9,16 +9,16 @@ import {AuthService} from "../../auth/auth.service";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private recipeService: RecipesService, private authS: AuthService) { }
+  constructor(private recipeService: RecipesService, public authS: AuthService) { }
 
   ngOnInit() {
   }
 
   save() {
-    this.recipeService.save().subscribe(response => console.log(response));
+    this.recipeService.save().subscribe( );
   }
   load() {
-    this.recipeService.load().subscribe(response => console.log(response));
+    this.recipeService.load().subscribe( );
   }
 
 }

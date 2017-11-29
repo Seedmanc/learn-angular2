@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 
 import {Ingredient} from "../../../shared/ingredient.model";
 import {ShoppingListService} from "../../shopping-list.service";
@@ -43,8 +43,8 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     this.editMode = false;
   }
 
-  deleteItem(id) {
+  deleteItem() {
     this.editMode = false;
-    this.shoppingService.delIng(id);
+    this.shoppingService.delIng(this.editId);
   }
 }

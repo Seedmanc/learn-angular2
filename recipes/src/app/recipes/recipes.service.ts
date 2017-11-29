@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {Recipe} from "./recipe.model";
 import {Ingredient} from "../shared/ingredient.model";
 import {ShoppingListService} from "../shopping-list/shopping-list.service";
-import {Subject} from "rxjs";
+import {Subject} from "rxjs/Subject";
 import "rxjs/Rx";
+//import "rxjs/Rxjs";
 import {Http} from "@angular/http";
 import {AuthService} from "../auth/auth.service";
 
