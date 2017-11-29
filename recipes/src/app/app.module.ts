@@ -9,22 +9,22 @@ import {AppRoutingModule} from "./app-routing.module";
 import {RecipesService} from "./recipes/recipes.service";
 import {AuthService} from "./auth/auth.service";
 import {AuthGuard} from "./auth/auth-guard.service";
-import {RecipeModule} from "./recipes/recipe.module";
 import {SharedModule} from "./shared/shared.module";
 import {ShoppingModule} from "./shopping-list/shopping.module";
 import {AuthModule} from "./auth/auth.module";
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    RecipeModule,
     ShoppingModule,
     SharedModule,
     AuthModule
