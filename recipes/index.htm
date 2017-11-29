@@ -30,7 +30,7 @@ textarea.ng-invalid.ng-touched{
     </div>
     <div _ngcontent-c1="" class="navbar-default">
       <ul _ngcontent-c1="" class="nav navbar-nav">
-        <li _ngcontent-c1="" routerlinkactive="active" ng-reflect-router-link-active="active" class="active"><a _ngcontent-c1="" routerlink="recipes" ng-reflect-router-link="recipes" href="http://localhost:4200/recipes">Recipes</a></li>
+        <li _ngcontent-c1="" routerlinkactive="active" ng-reflect-router-link-active="active" class=""><a _ngcontent-c1="" routerlink="recipes" ng-reflect-router-link="recipes" href="http://localhost:4200/recipes">Recipes</a></li>
         <li _ngcontent-c1="" routerlinkactive="active" ng-reflect-router-link-active="active"><a _ngcontent-c1="" routerlink="shopping" ng-reflect-router-link="shopping" href="http://localhost:4200/shopping">Shopping List</a></li>
       </ul>
       <ul _ngcontent-c1="" class="nav navbar-nav navbar-right">
@@ -54,50 +54,12 @@ textarea.ng-invalid.ng-touched{
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <router-outlet></router-outlet><recipes _nghost-c2=""><div _ngcontent-c2="" class="row">
-  <div _ngcontent-c2="" class="col-md-5">
-    <recipe-list _ngcontent-c2="" _nghost-c3=""><div _ngcontent-c3="" class="row">
-  <div _ngcontent-c3="" class="col-xs-12">
-    <!--bindings={
-  "ng-reflect-ng-if": "false"
-}-->
-  </div>
-</div>
-<hr _ngcontent-c3="">
-<div _ngcontent-c3="" class="row">
-  <div _ngcontent-c3="" class="col-xs-12">
-    <!--bindings={
-  "ng-reflect-ng-for-of": "[object Object],[object Object"
-}--><recipe-item _ngcontent-c3="" _nghost-c4="" ng-reflect-recipe="[object Object]" ng-reflect-id="0"><a _ngcontent-c4="" class="list-group-item clearfix" routerlinkactive="active" style="cursor: pointer;" ng-reflect-router-link="0" ng-reflect-router-link-active="active" href="http://localhost:4200/recipes/0">
-  <div _ngcontent-c4="" class="pull-left">
-    <h4 _ngcontent-c4="" class="list-group-item-heading">Schnitzel</h4>
-    <p _ngcontent-c4="" class="list-group-item-text">this is a test</p>
-  </div>
-  <span _ngcontent-c4="" class="pull-right">
-        <img _ngcontent-c4="" class="img-responsive" style="max-height:50px;" src="index_files/82540-200.png" alt="Schnitzel">
-      </span>
-</a>
-</recipe-item><recipe-item _ngcontent-c3="" _nghost-c4="" ng-reflect-recipe="[object Object]" ng-reflect-id="1"><a _ngcontent-c4="" class="list-group-item clearfix" routerlinkactive="active" style="cursor: pointer;" ng-reflect-router-link="1" ng-reflect-router-link-active="active" href="http://localhost:4200/recipes/1">
-  <div _ngcontent-c4="" class="pull-left">
-    <h4 _ngcontent-c4="" class="list-group-item-heading">Burger</h4>
-    <p _ngcontent-c4="" class="list-group-item-text">this is again a test</p>
-  </div>
-  <span _ngcontent-c4="" class="pull-right">
-        <img _ngcontent-c4="" class="img-responsive" style="max-height:50px;" src="index_files/82545-200.png" alt="Burger">
-      </span>
-</a>
-</recipe-item>
-  </div>
-</div>
-
-</recipe-list>
-  </div>
-  <div _ngcontent-c2="" class="col-md-7">
-    <router-outlet _ngcontent-c2=""></router-outlet><app-recipe-placeholder _nghost-c5=""><h4 _ngcontent-c5="">Please select a recipe</h4>
-</app-recipe-placeholder>
-  </div>
-</div>
-</recipes>
+      <router-outlet></router-outlet><app-signin _nghost-c7=""><form _ngcontent-c7="" novalidate="" class="ng-untouched ng-dirty ng-valid">
+  <div _ngcontent-c7="" class="form-group"><label _ngcontent-c7="">mail <input _ngcontent-c7="" class="form-control ng-untouched ng-dirty ng-valid" name="email" ngmodel="" required="" ng-reflect-required="" ng-reflect-name="email" ng-reflect-model="" value="a@b.cd" type="email"></label></div>
+  <div _ngcontent-c7="" class="form-group"><label _ngcontent-c7="">password <input _ngcontent-c7="" class="form-control ng-untouched ng-dirty ng-valid" minlength="6" name="password" ngmodel="" required="" ng-reflect-required="" ng-reflect-minlength="6" ng-reflect-name="password" ng-reflect-model="" type="password"></label></div>
+  <button _ngcontent-c7="" class="btn btn-primary" type="submit">sign in</button>
+</form>
+</app-signin>
     </div>
   </div>
 </div>
