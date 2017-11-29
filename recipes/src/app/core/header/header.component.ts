@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {RecipesService} from "../recipes/recipes.service";
-import {AuthService} from "../auth/auth.service";
+import {RecipesService} from "../../recipes/recipes.service";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'rcp-header',
