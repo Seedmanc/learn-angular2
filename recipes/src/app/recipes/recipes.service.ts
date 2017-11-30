@@ -5,14 +5,14 @@ import {ShoppingListService} from "../shopping-list/shopping-list.service";
 import {Subject} from "rxjs/Subject";
 import "rxjs/Rx";
 //import "rxjs/Rxjs";
-import {Http} from "@angular/http";
+import {HttpClient, HttpParams, HttpRequest} from "@angular/common/http";
 import {AuthService} from "../auth/auth.service";
 
 @Injectable()
 export class RecipesService {
   recipesChanges = new Subject<Recipe[]>();
 
-  constructor(private shopService: ShoppingListService, private http: Http, private authS:AuthService){}
+  constructor(private shopService: ShoppingListService, private http: HttpClient, private authS:AuthService){}
 
   private recipes: Recipe[] = [
     new Recipe({
@@ -59,15 +59,20 @@ export class RecipesService {
 
   save() {
     return this.authS.getToken()
-      .flatMap(token => this.http.put('https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+token, this.recipes));
+      .flatMap(token => {
+        const req = new HttpRequest('PUT','https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+token, this.recipes,{reportProgress:true});
+        return this.http.request(req);
+        //this.http.put('https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+token, this.recipes)
+      });
   }
   load() {
     return this.authS.getToken()
-      .flatMap(token => this.http.get('https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+token))
-      .map(response => {
-          this.recipes = response.json().map(el => new Recipe(el));
+      .flatMap(token => this.http.get<any[]>('https://ng-recipe-book-f8908.firebaseio.com/recipes.json',
+        {params: new HttpParams().set('auth', token)}))
+      .map(recipes => {
+          this.recipes = recipes.map(el => new Recipe(el));
           this.recipesChanges.next(this.recipes.slice());
-          return response;
+          return recipes;
         });
   }
 
