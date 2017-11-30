@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import {Recipe} from "./recipe.model";
 import {Ingredient} from "../shared/ingredient.model";
-import {ShoppingListService} from "../shopping-list/shopping-list.service";
 import {Subject} from "rxjs/Subject";
 import "rxjs/Rx";
 //import "rxjs/Rxjs";
-import {HttpClient, HttpParams, HttpRequest} from "@angular/common/http";
+import {HttpClient, HttpRequest} from "@angular/common/http";
 import {AuthService} from "../auth/auth.service";
 
 @Injectable()
 export class RecipesService {
   recipesChanges = new Subject<Recipe[]>();
 
-  constructor(private shopService: ShoppingListService, private http: HttpClient, private authS:AuthService){}
+  constructor(private http: HttpClient, private authS:AuthService){}
 
   private recipes: Recipe[] = [
     new Recipe({
@@ -35,10 +34,6 @@ export class RecipesService {
   }
   getRecipe(id: number) {
     return this.recipes.slice()[id];
-  }
-
-  addToShop(ingredients: Ingredient[]) {
-    this.shopService.addIngs(ingredients);
   }
 
   addRecipe(r: Recipe) {

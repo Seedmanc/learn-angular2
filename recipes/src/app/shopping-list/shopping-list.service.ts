@@ -18,25 +18,6 @@ export class ShoppingListService {
     return this.ingredients[id];
   }
 
-  getList() {
-    return this.ingredients.slice();
-  }
-
-  addIng(ing: Ingredient){
-    const id = this.ingredients.findIndex(el => el.name == ing.name);
-
-    if (~id) {
-      this.ingredients[id].amount += ing.amount;
-    } else {
-      this.ingredients.push(ing);
-    }
-    this.pushChanges();
-  }
-
-  addIngs(ings: Ingredient[]){
-    ings.forEach(ing => this.addIng(ing));
-  }
-
   updIngs(id: number, ing: Ingredient) {
     this.ingredients[id] = ing;
     this.pushChanges();

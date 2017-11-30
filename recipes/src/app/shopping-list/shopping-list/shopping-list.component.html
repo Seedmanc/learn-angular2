@@ -3,7 +3,8 @@
     <shopping-edit></shopping-edit>
     <hr>
     <ul class="list-group">
-      <a class="list-group-item" style="cursor: pointer" *ngFor="let ing of ingredients; let i=index" (click)="edit(i)">
+      <!--that's some black async magic here alright, im impress -->
+      <a class="list-group-item" style="cursor: pointer" *ngFor="let ing of (shoppingState | async).ingredients; let i=index" (click)="edit(i)">
         {{ing.name}} ({{ing.amount}})
       </a>
     </ul>
