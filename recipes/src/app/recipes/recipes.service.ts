@@ -58,22 +58,17 @@ export class RecipesService {
   }
 
   save() {
-    return this.authS.getToken()
-      .flatMap(token => {
-        const req = new HttpRequest('PUT','https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+token, this.recipes,{reportProgress:true});
-        return this.http.request(req);
-        //this.http.put('https://ng-recipe-book-f8908.firebaseio.com/recipes.json?auth='+token, this.recipes)
-      });
+    const req = new HttpRequest('PUT','https://ng-recipe-book-f8908.firebaseio.com/recipes.json', this.recipes,{reportProgress:true});
+    return this.http.request(req);
   }
   load() {
     return this.authS.getToken()
-      .flatMap(token => this.http.get<any[]>('https://ng-recipe-book-f8908.firebaseio.com/recipes.json',
-        {params: new HttpParams().set('auth', token)}))
+      .flatMap(token => this.http.get<any[]>('https://ng-recipe-book-f8908.firebaseio.com/recipes.json'))
       .map(recipes => {
           this.recipes = recipes.map(el => new Recipe(el));
           this.recipesChanges.next(this.recipes.slice());
           return recipes;
-        });
+        })
   }
 
 }
