@@ -3,9 +3,9 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 import * as ShoppingActions from '../../store/shopping.actions';
+import * as fromShopping from '../../store/shopping.reducers';
 
 import {Ingredient} from "../../../shared/ingredient.model";
-import {ShoppingListService} from "../../shopping-list.service";
 
 @Component({
   selector: 'shopping-edit',
@@ -16,17 +16,19 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('form') form:NgForm;
   sub: Subscription;
   editMode: boolean;
-  editId: number;
+  editItem: Ingredient;
 
-  constructor(private shoppingService: ShoppingListService, private store: Store<{
-    shoppingList: {ingredients: Ingredient[]}
-  }>) { }
+  constructor(private store: Store<fromShopping.AppState>) { }
 
   ngOnInit() {
-    this.sub = this.shoppingService.editing.subscribe(id=> {
-      this.editMode = true;
-      this.editId = id;
-      this.form.setValue(this.shoppingService.getIng(id));
+    this.sub = this.store.select('shoppingList').subscribe(data => {
+      if (~data.editId) {
+        this.editItem = data.editIng;
+        this.editMode = true;
+        this.form.setValue(this.editItem);
+      } else {
+        this.editMode = false;
+      }
     });
   }
 
@@ -36,7 +38,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   addItem() {
     if (this.editMode)
-      this.shoppingService.updIngs(this.editId, new Ingredient(this.form.value.name, this.form.value.amount))
+      this.store.dispatch(new ShoppingActions.UpdIngredient({ingredient:new Ingredient(this.form.value.name, this.form.value.amount)}))
     else
       this.store.dispatch(new ShoppingActions.AddIngredient(new Ingredient(this.form.value.name, this.form.value.amount)));
 
@@ -50,6 +52,6 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   deleteItem() {
     this.editMode = false;
-    this.shoppingService.delIng(this.editId);
+    this.store.dispatch(new ShoppingActions.DelIngredient());
   }
 }
