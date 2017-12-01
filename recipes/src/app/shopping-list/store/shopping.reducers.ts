@@ -47,7 +47,9 @@ export function shoppingReducer(state = initialState, action: ShoppingActions.Sh
 
       return {
         ...state,
-        ingredients: ingredients
+        ingredients: ingredients,
+        editIng: null,
+        editId: -1
       };
     case ShoppingActions.DEL_INGS:
       const i = [...state.ingredients];
@@ -63,6 +65,12 @@ export function shoppingReducer(state = initialState, action: ShoppingActions.Sh
         ...state,
         editIng: {...state.ingredients[<number>action.payload]},
         editId: action.payload
+      };
+    case ShoppingActions.STOP_EDIT:
+      return {
+        ...state,
+        editIng: null,
+        editId: -1
       };
     default:
       return state;

@@ -6,6 +6,7 @@ export const ADD_INGS = 'ADD_INGREDIENTS';
 export const UPD_INGS = {};
 export const DEL_INGS = {};
 export const START_EDIT = {};
+export const STOP_EDIT = {};
 
 export class AddIngredient implements Action {
   readonly type = ADD_ING;
@@ -27,5 +28,9 @@ export class StartEdit implements Action {
   readonly type = <string>START_EDIT;
   constructor(public payload:number) {}
 }
+export class StopEdit implements Action {
+  readonly type = <string>STOP_EDIT;
+  constructor(public payload?) {}
+}
 
-export type ShoppingActions = AddIngredient | AddIngredients | UpdIngredient | DelIngredient | StartEdit;
+export type ShoppingActions = AddIngredient | AddIngredients | UpdIngredient | DelIngredient | StartEdit | StopEdit;
