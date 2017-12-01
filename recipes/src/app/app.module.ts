@@ -9,7 +9,7 @@ import {SharedModule} from "./shared/shared.module";
 import {ShoppingModule} from "./shopping-list/shopping.module";
 import {AuthModule} from "./auth/auth.module";
 import {CoreModule} from "./core/core.module";
-import {shoppingReducer} from "./shopping-list/store/shopping.reducers";
+import {reducers} from "./store/app.reducers";
 
 
 @NgModule({
@@ -24,7 +24,7 @@ import {shoppingReducer} from "./shopping-list/store/shopping.reducers";
     SharedModule,
     AuthModule,
     CoreModule,
-    StoreModule.forRoot({shoppingList: shoppingReducer})
+    StoreModule.forRoot(reducers)
   ],
   bootstrap: [AppComponent]
 })

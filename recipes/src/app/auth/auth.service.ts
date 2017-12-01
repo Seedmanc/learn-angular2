@@ -4,24 +4,31 @@ import * as firebase from 'firebase';
 import "rxjs/Rx";
 //import "rxjs/Rxjs";
 import {Observable} from 'rxjs/Observable';
+import {Store} from '@ngrx/store';
+import * as fromApp from '../store/app.reducers';
+import * as AuthActions from './store/auth.actions';
 
 @Injectable()
 export class AuthService {
-  //token: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private store: Store<fromApp.AppState>) { }
 
   signupUser({email, password}) {
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(err => console.log(err));
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(()=> this.store.dispatch(new AuthActions.SignUp()))
+      .catch(err => console.log(err));
   }
   signinUser({email, password}) {
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(response => this.router.navigate(['/recipes']))
+      .then(response => {
+        this.store.dispatch(new AuthActions.SignIn());
+        this.router.navigate(['/recipes'])
+      })
       .catch(err=>console.log(err));
   }
 
   getToken() {
-    return Observable.fromPromise(firebase.auth().currentUser.getToken()/*.then(token => this.token = token)*/);
+    return Observable.fromPromise(firebase.auth().currentUser.getToken());
   }
 
   isAuthed() {
@@ -30,6 +37,7 @@ export class AuthService {
 
   logout() {
     firebase.auth().signOut();
+    this.store.dispatch(new AuthActions.LogOut());
   }
 
 }
