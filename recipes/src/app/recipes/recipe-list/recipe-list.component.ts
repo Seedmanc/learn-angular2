@@ -2,10 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {Recipe} from "../recipe.model";
 import {RecipesService} from "../recipes.service";
 import {Subscription} from 'rxjs/Subscription'
-import {Store} from '@ngrx/store';
-import * as fromApp from '../../store/app.reducers';
-import * as fromAuth from '../../auth/store/auth.reducers';
-import {Observable }from 'rxjs/Observable';
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'recipe-list',
@@ -15,14 +12,12 @@ import {Observable }from 'rxjs/Observable';
 export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[];
   sub: Subscription;
-  authState: Observable<fromAuth.State>;
 
-  constructor(private recipeService: RecipesService, private store: Store<fromApp.AppState>) { }
+  constructor(private recipeService: RecipesService, public authS: AuthService) { }
 
   ngOnInit() {
     this.recipes = this.recipeService.getRecipes();
-    this.sub = this.recipeService.recipesChanges.subscribe(rs => this.recipes = rs);
-    this.authState = this.store.select('auth');
+    this.sub =this.recipeService.recipesChanges.subscribe(rs => this.recipes = rs);
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
