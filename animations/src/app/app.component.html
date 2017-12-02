@@ -5,7 +5,7 @@
       <button class="btn btn-primary" (click)="onAnimate()">Animate!</button>
       <button class="btn btn-primary" (click)="onShrink()">Shrink!</button>
       <hr>
-      <div [@divState]="state" style="width:200px;height:200px"></div>
+      <div [@divState]="state" style="width:200px;height:200px" (@divState.start)="animStart($event)" (@divState.done)="animEnd($event)"></div>
       <br>
       <div [@wildState]="wild" style="width:200px;height:200px"></div>
     </div>
@@ -21,6 +21,16 @@
           class="list-group-item"
           (click)="onDelete(item)"
           [@list1]
+          *ngFor="let item of list">
+          {{ item }}
+        </li>
+      </ul>
+      <hr>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          (click)="onDelete(item)"
+          [@list2]
           *ngFor="let item of list">
           {{ item }}
         </li>
