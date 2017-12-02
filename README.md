@@ -4,4 +4,6 @@
 
 **https://seedmanc.github.io/learn-angular2/forms** <= working forms practice lessons
 
+**https://seedmanc.github.io/learn-angular2/animations** <= working animations
+
 **https://seedmanc.github.io/learn-angular2/recipes** <= working course project
