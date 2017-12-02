@@ -17,7 +17,7 @@ import {shoppingReducer} from "./shopping-list/store/shopping.reducers";
     AppComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId:'recipes'}),
     AppRoutingModule,
     HttpClientModule,
     ShoppingModule,
