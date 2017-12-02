@@ -28,10 +28,37 @@ import {animate, Component, state, style, transition, trigger} from '@angular/co
         backgroundColor: 'green',
         transform: 'translateX(0) scale(0.5)'
       })),
-      transition('normal => highlighted', animate(400)),
+      transition('normal => highlighted', animate(300)),
       transition('highlighted => normal', animate(800)),
-      transition('shrunken <=> *', animate(600)),
-    ])
+      transition('shrunken <=> *', [
+        style({
+          backgroundColor: 'orange'
+        }),
+        animate(1000, style({
+          borderRadius: '50px'
+        })),
+        animate(500)
+      ]),
+    ]),
+    trigger('list1', [
+      state('in', style({
+        opacity: 1,
+        transform: 'translateX(0)'
+      })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+          transform: 'translateX(-100px)'
+        }),
+        animate(400)
+      ]),
+      transition('* => void', [
+        animate(400, style({
+          transform: 'translateX(100px)',
+          opacity: 0
+        }))
+      ])
+    ]),
   ]
 })
 export class AppComponent {
